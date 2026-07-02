@@ -1,0 +1,59 @@
+@import url("./styles/global.css");
+
+/* Shared basic legacy classes or simple wrapper support */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Base style resets to match the global theme if fallback components are rendered */
+form {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+input {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 12px 0;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+}
+
+button {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  font-size: 16px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}

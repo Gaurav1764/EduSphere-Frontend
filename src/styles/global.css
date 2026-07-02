@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* HSL Base Colors for Dynamic Opacity Adjustments */
+  --primary-hsl: 243, 75%, 59%;      /* Indigo (#4f46e5) */
+  --secondary-hsl: 271, 91%, 65%;    /* Purple (#a855f7) */
+  --accent-hsl: 168, 100%, 46%;      /* Neon Mint/Cyan (#16ff9d) */
+  --rose-hsl: 341, 100%, 59%;        /* Pink/Red (#ff2d6f) */
+  
+  --bg-dark-hsl: 222, 47%, 11%;      /* Deep Slate Blue (#0f172a) */
+  --bg-deep-hsl: 224, 71%, 4%;       /* Midnight Indigo (#020617) */
+  
+  /* Hex Variables for Fast Mapping */
+  --primary: hsl(var(--primary-hsl));
+  --secondary: hsl(var(--secondary-hsl));
+  --accent: hsl(var(--accent-hsl));
+  --rose: hsl(var(--rose-hsl));
+  
+  --bg-dark: hsl(var(--bg-dark-hsl));
+  --bg-deep: hsl(var(--bg-deep-hsl));
+  
+  /* Text Theme */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  /* Glassmorphism Configuration */
+  --glass-bg: rgba(15, 23, 42, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-focus: rgba(99, 102, 241, 0.4);
+  --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --glass-blur: blur(16px);
+  
+  /* Animations Settings */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset and Globals */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', 'Outfit', 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-deep);
+  background-image: linear-gradient(rgba(2, 6, 23, 0.3), rgba(2, 6, 23, 0.6)), url('/student_portal_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+}
+
+/* Scrollbar Enhancement */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 4px;
+  transition: var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.6);
+}
+
+/* Background animated glow mesh bubbles */
+.bg-mesh-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-mesh-bubble {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.15;
+  mix-blend-mode: screen;
+  animation: floatBubble 25s infinite alternate ease-in-out;
+}
+
+.bg-mesh-bubble.bubble-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 80%);
+  top: -10%;
+  left: -10%;
+  animation-duration: 20s;
+}
+
+.bg-mesh-bubble.bubble-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 80%);
+  bottom: -5%;
+  right: -5%;
+  animation-duration: 28s;
+  animation-delay: -5s;
+}
+
+.bg-mesh-bubble.bubble-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 80%);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 22s;
+  animation-delay: -10s;
+}
+
+@keyframes floatBubble {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(50px, -40px) scale(1.1);
+  }
+  100% {
+    transform: translate(-30px, 60px) scale(0.95);
+  }
+}
+
+/* Glassmorphism Helper Classes */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 20px;
+  transition: border var(--transition-fast), transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.neon-text-glow {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+}
+
+.accent-text-glow {
+  text-shadow: 0 0 20px rgba(22, 255, 157, 0.35);
+}
